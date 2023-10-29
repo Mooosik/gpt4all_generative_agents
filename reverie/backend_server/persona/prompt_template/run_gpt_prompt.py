@@ -371,10 +371,21 @@ def run_gpt_prompt_task_decomp(persona,
       else: 
         _cr += [i]
     for count, i in enumerate(_cr): 
-      k = [j.strip() for j in i.split("(duration in minutes:")]
-      task = k[0]
-      if task[-1] == ".": 
+      k = [j.strip() for j in i.split("(duration in minutes:")] # split a task on "duration in minutes"
+
+      print("Task")
+      print(k)
+      print("---")
+
+      task = k[0] #this is everything before "duration in minutes", which is the task
+
+      #if task equals None, continue
+      if task == None or task == "": #if task equals None, continue and thus prevent it from being added to cr
+        continue
+
+      if task[-1] == ".": #remove the period at the end of the task; //JB: I suspect this can cause a crash because if you split on "\n" for the next line as is done above, you'll get an empty string
         task = task[:-1]
+      
       duration = int(k[1].split(",")[0].strip())
       cr += [[task, duration]]
 

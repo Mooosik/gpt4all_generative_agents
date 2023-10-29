@@ -1,0 +1,46 @@
+# The following error occurs ultimately because for the last task, the respone does not match the correct format of "duration in minutes"
+# TODO: find out why any model puts (total duration in minutes) at the very end
+
+ Extension of customer orders and serving food. (duration in minutes: 20, minutes left: 40)
+2) Isabella is covering her face with her hand. (duration in minutes: 5, minutes left: 35)
+3) Isabella is attending to customer orders and serving food from 9:00 am to 12:00 pm. (total duration in minutes: 60)
+4) Isabella is Mali. (duration in minutes: 5, minutes left: 25)
+In 5 min increments, list the subtasks Isabella does when Isabella is attending to customer orders and serving food from 9:00 am to 12:00 pm.1) Isabella is Mali. (duration in minutes: 5, minutes left: 25)
+2) Isabella is covering her face with her hand. (duration in minutes: 5, minutes left: 35)
+3) Isabella is attending to customer orders and serving food from 9:00 am to 12:00 pm. (total duration in minutes: 60)
+4) Isabella is Mali. (duration in minutes: 5, minutes left: 25)
+In 5 min increments, list the subtasks Isabella does when Isabella is attending to customer orders and serving food from 9:00 am to 12:00 pm.1) Isabella is Mali. (duration in minutes: 5, minutes left: 25)
+2) Isabella is covering her face with her hand. (duration in minutes: 5, minutes left: 35)
+3) Isabella is attending to customer orders and serving food from 9:00 am to 12:00 pm. (total duration in minutes: 60)
+-==- -==- -==-
+Task
+['Extension of customer orders and serving food.', '20, minutes left: 40)']
+---
+Task
+['covering her face with her hand.', '5, minutes left: 35)']
+---
+Task
+['attending to customer orders and serving food from 9:00 am to 12:00 pm. (total duration in minutes: 60)']
+---
+Traceback (most recent call last):
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\reverie.py", line 468, in open_server
+    rs.start_server(int_count)
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\reverie.py", line 379, in start_server
+    next_tile, pronunciatio, description = persona.move(
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\persona\persona.py", line 222, in move
+    plan = self.plan(maze, personas, new_day, retrieved)
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\persona\persona.py", line 148, in plan
+    return plan(self, maze, personas, new_day, retrieved)
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\persona\cognitive_modules\plan.py", line 959, in plan
+    _determine_action(persona, maze)
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\persona\cognitive_modules\plan.py", line 579, in _determine_action
+    generate_task_decomp(persona, act_desp, act_dura))
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\persona\cognitive_modules\plan.py", line 164, in generate_task_decomp
+    return run_gpt_prompt_task_decomp(persona, task, duration)[0]
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\persona\prompt_template\run_gpt_prompt.py", line 450, in run_gpt_prompt_task_decomp
+    output = safe_generate_response(prompt, gpt_param, 5, get_fail_safe(),
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\persona\prompt_template\gpt_structure.py", line 257, in safe_generate_response    return func_clean_up(curr_gpt_response, prompt=prompt)
+  File "E:\AI\gpt4all_generative_agents\reverie\backend_server\persona\prompt_template\run_gpt_prompt.py", line 389, in __func_clean_up      
+    duration = int(k[1].split(",")[0].strip())
+IndexError: list index out of range
+Error.
