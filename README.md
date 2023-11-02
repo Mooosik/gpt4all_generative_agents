@@ -120,6 +120,8 @@ For a more involved customization, you will need to author your own base simulat
 
 **Authors:** Joon Sung Park, Joseph C. O'Brien, Carrie J. Cai, Meredith Ringel Morris, Percy Liang, Michael S. Bernstein
 
+**Repository Contributors** Saturn Cassini, Mooosik
+
 Please cite our paper if you use the code or data in this repository. 
 ```
 @inproceedings{Park2023GenerativeAgents,  
