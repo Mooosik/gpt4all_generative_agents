@@ -383,7 +383,7 @@ def run_gpt_prompt_task_decomp(persona,
       if task == None or task == "": #if task equals None, continue and thus prevent it from being added to cr
         continue
 
-      if task[-1] == ".": #remove the period at the end of the task; //JB: I suspect this can cause a crash because if you split on "\n" for the next line as is done above, you'll get an empty string
+      if task[-1] == ".": #remove the period at the end of the task; // I suspect this can cause a crash because if you split on "\n" for the next line as is done above, you'll get an empty string
         task = task[:-1]
       
       duration = int(k[1].split(",")[0].strip())
