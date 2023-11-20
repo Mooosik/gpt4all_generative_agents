@@ -1,4 +1,5 @@
 reverie/backend_server/models/*
+!reverie/backend_server/models/*.txt
 frontend_server/settings/local.py
 storage/*
 static_dirs/*
