@@ -1,5 +1,8 @@
-# The following error occurs ultimately because for the last task, the respone does not match the correct format of "duration in minutes"
+# Error occurs in run_gpt_prompt.py
+# The output messages below are split on "duration in minutes" (because the og devs thought this was a good idea)
+# I assume the following error occurs ultimately because for the last task, the response does not match the correct format of "duration in minutes"
 # TODO: find out why any model puts (total duration in minutes) at the very end
+
 
  Extension of customer orders and serving food. (duration in minutes: 20, minutes left: 40)
 2) Isabella is covering her face with her hand. (duration in minutes: 5, minutes left: 35)
@@ -20,7 +23,7 @@ Task
 ['covering her face with her hand.', '5, minutes left: 35)']
 ---
 Task
-['attending to customer orders and serving food from 9:00 am to 12:00 pm. (total duration in minutes: 60)']
+['attending to customer orders and serving food from 9:00 am to 12:00 pm. (total duration in minutes: 60)'] # it does not split into two parts. I suspect this causes the project to crash afterwards
 ---
 Traceback (most recent call last):
   File "E:\AI\gpt4all_generative_agents\reverie\backend_server\reverie.py", line 468, in open_server
